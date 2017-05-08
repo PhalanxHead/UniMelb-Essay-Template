@@ -1,0 +1,100 @@
+% The twoside setting lets LaTeX know you want 2 different header or footer
+% layouts. Not Essential but it looks really nice.
+\documentclass[twoside, a4paper, 12pt]{article}
+
+% Package Settings
+% The UTF-8 Setting just allows full unicode chars to be used, especially
+% handy for citing things from other languages.
+\usepackage[utf8]{inputenc}
+% Geometry just sets up the page to use proper margins. Check your subject's
+% requirements for this, some want 2.5cm all around the doc.
+\usepackage[margin=2cm, left=3cm, includefoot]{geometry}
+% Using double spacing. Pretty simplistic really
+\usepackage{setspace}
+\doublespacing
+% 2017 Sem 1 History subjects require Chicago 16A Footnote Style referencing.
+% I use the authordate-trad environment because it prints all of the
+% authors in the footcite rather than just the first.
+\usepackage[backend=biber,authordate-trad]{biblatex-chicago}
+% All your references should go into Refs.bib. A sample reference layout
+% Will be included, but you can google `bibtex citation generator' and
+% Paste in a webpage or book name into the first result and get a decent
+% bibtex style citation that can be used here.
+\addbibresource{Refs.bib}
+% This lets you include pictures! Do some research because it can be fiddly.
+\usepackage{graphicx}
+% This one makes for easy quotations and block quotations. Once again, do
+% Research if you need.
+\usepackage{csquotes}
+% This one just lets you make fancy headers and footers with complex layouts.
+\usepackage{fancyhdr}
+% This is just here to let me put the title in the footer but it comes in handy
+\usepackage{titling}
+% This makes all of your URLs into hyperlinks and links your citations around
+% the document.
+\usepackage[hidelinks]{hyperref}
+% Another environment for putting figures in, lets the words wrap around nicely
+\usepackage{wrapfig}
+% Allows for more useable captions for figures.
+\usepackage{caption}
+% Literally lets me use the lipsum command for junk text. Can delete
+\usepackage{lipsum}
+
+% Page Style Stuff
+\fancypagestyle{plain}{
+  \fancyhf{}
+  %Change these values to change the thicknesses of the top and bottom lines!
+  \renewcommand{\headrulewidth}{0.1pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+  %Personalised footer
+  \fancyfoot[LE,RO]{\theauthor}
+  \fancyfoot[C]{\thetitle}
+  \fancyfoot[RE,LO]{Page \thepage}
+}
+
+% Allows for sourcing images properly.
+\newcommand{\source}[1]{\caption*{Source: {#1}} }
+
+\title{The Title Goes Here}
+\author{PhalanxHead}
+\date{\today}
+
+% Handy Citation Notes for later:
+% \footcite[200]{morris_powell_2010} %To add page numbers to citations
+% \blockquote{} % If you plan to quote a huge section of a book.
+
+\begin{document}
+
+\pagenumbering{Alph}
+\begin{titlepage}
+    \centering
+    \includegraphics[width=0.3\textwidth]{UniLogo.jpg}\par\vspace{1cm}
+    {\scshape\Large THE UNIVERSITY OF MELBOURNE \\
+              \large Subject Code and Name \par} % The \\ splits the line
+    \vspace{1.5cm}
+    {\Huge \thetitle \par}
+    \vfill
+
+% Bottom of the page
+    {\Large\itshape \theauthor \hspace{1em} -- \hspace{1em} STUDENT NUMBER \par}
+    \vspace{1.5cm}
+    {\Large \thedate}
+\end{titlepage}
+% Format first page correctly.
+\pagestyle{plain}
+\pagenumbering{arabic}
+
+This is the basic layout of your typical essay. {\LaTeX} looks really nice
+and is definitely worth using for your essays. The citations alone are really
+easy to use and take the stress out of actually writing the essay. \footcite{PhalanxHead_2017}
+\par\vspace{1em}
+
+\lipsum[1-5]
+
+\nocite{*}
+% Bib page
+\newpage
+
+\printbibliography
+
+\end{document}
