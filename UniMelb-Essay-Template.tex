@@ -11,7 +11,7 @@
 \usepackage[margin=2cm, left=3cm, includefoot]{geometry}
 % Using double spacing. Pretty simplistic really
 \usepackage{setspace}
-\doublespacing
+
 % 2017 Sem 1 History subjects require Chicago 16A Footnote Style referencing.
 % I use the authordate-trad environment because it prints all of the
 % authors in the footcite rather than just the first.
@@ -84,12 +84,16 @@
 \pagestyle{plain}
 \pagenumbering{arabic}
 
+% Essay Section should go in the doublespacing environment
+\begin{doublespacing}
 This is the basic layout of your typical essay. {\LaTeX} looks really nice
 and is definitely worth using for your essays. The citations alone are really
 easy to use and take the stress out of actually writing the essay. \footcite{PhalanxHead_2017}
 \par\vspace{1em}
 
 \lipsum[1-5]
+
+\end{doublespacing}
 
 \nocite{*}
 % Bib page
